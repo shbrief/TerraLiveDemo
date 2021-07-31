@@ -14,6 +14,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
 	&& apt-get -y --no-install-recommends install google-cloud-sdk \
 	&& rm -rf /var/lib/apt/lists/*
 	
-RUN Rscript -e "options(repos = c(CRAN = 'https://cran.r-project.org')); BiocManager::install(ask=FALSE)"
+RUN Rscript -e "BiocManager::install('AnVIL')"
+RUN Rscript -e "options(repos = c(CRAN = 'https://cran.r-project.org')); AnVIL::install(ask=FALSE)"
 
 RUN Rscript -e "options(repos = c(CRAN = 'https://cran.r-project.org')); devtools::install('.', dependencies=TRUE, build_vignettes=TRUE, repos = BiocManager::repositories())"
