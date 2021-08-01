@@ -1,7 +1,7 @@
 ## Dockerfile for TerraLiveDemo
 ## 96 required packages should be installed using BiocManager.
 
-FROM us.gcr.io/broad-dsp-gcr-public/terra-jupyter-bioconductor:2.0.0
+FROM us.gcr.io/anvil-gcr-public/anvil-rstudio-bioconductor
 	
 RUN Rscript -e "options(repos = c(CRAN = 'https://cran.r-project.org')); BiocManager::install(ask=FALSE)"
 
